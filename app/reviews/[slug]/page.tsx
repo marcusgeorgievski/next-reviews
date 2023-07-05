@@ -12,24 +12,26 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params: { slug } }) {
 	const review = await getReview(slug);
 	return {
-		title: review.data.title,
+		title: review.title,
 	};
 }
 
 export default async function ReviewPage({ params: { slug } }) {
-	const { body, data } = await getReview(slug);
+	const { body, title, date, image, tags, note } = await getReview(slug);
 
 	return (
 		<>
-			<h1>{data.title}</h1>
+			<h1>{title}</h1>
+
 			<div className="flex justify-between mb-2 text-xs">
 				<p className="flex items-end gap-1 font-code">
-					<BsCalendar3 /> {data.date}
+					<BsCalendar3 /> {date}
 				</p>
 				<ShareLinkButton />
 			</div>
+
 			<Image
-				src={data.image}
+				src={image}
 				width={1100}
 				height={320}
 				alt=""

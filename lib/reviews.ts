@@ -1,24 +1,26 @@
 import { readFile, readdir } from "fs/promises";
 import { marked } from "marked";
 import matter from "gray-matter";
-
-interface Review {
-	body: string;
-	data: any;
-	slug: string;
-}
+import { Review } from "@/lib/types";
 
 // Get single review
 
 export async function getReview(slug: string): Promise<Review> {
 	const fileText = await readFile(`content/reviews/${slug}.md`, "utf8");
-	const { content, data } = matter(fileText);
+	const {
+		content,
+		data: { title, date, image, tags, note },
+	} = matter(fileText);
 	const body = marked(content, { headerIds: false, mangle: false });
 
 	return {
-		body,
-		data,
 		slug,
+		body,
+		title,
+		date,
+		image,
+		tags,
+		note,
 	};
 }
 
@@ -33,7 +35,7 @@ export async function getReviews(): Promise<Review[]> {
 		reviews.push(review);
 	}
 
-	reviews.sort((a, b) => compareDate(a.data.date, b.data.date));
+	reviews.sort((a, b) => compareDate(a.date, b.date));
 	return reviews; // sort later
 }
 
