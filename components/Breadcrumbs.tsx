@@ -2,12 +2,14 @@
 import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
 import { HiOutlineHome } from "react-icons/hi";
-// import { BiSolidChevronRight } from "react-icons/bi";
 
 export default function Breadcrumbs() {
-	const segments = useSelectedLayoutSegments();
+	// Filter to ignore nested latouts
+	const segments = useSelectedLayoutSegments().filter(
+		(s) => !s.startsWith("(")
+	);
 	// console.log(segments);
-	// console.log(segments.join("/"));
+
 	return (
 		<div className="flex">
 			<span className="flex items-center">

@@ -58,11 +58,11 @@ export function ReviewSearch({ search, setSearch }) {
 	);
 }
 
-function Card({ review }) {
+function Card({ review }: { review: Review }) {
 	return (
 		<li
 			key={review.slug}
-			className="overflow-hidden bg-white border rounded shadow "
+			className="overflow-hidden bg-white border rounded shadow hover:scale-[1.01] transition-all"
 		>
 			<Link href={`reviews/${review.slug}`}>
 				<Image
@@ -72,7 +72,10 @@ function Card({ review }) {
 					alt=""
 					className="w-full"
 				/>
-				<h2 className="font-semibold text-center">{review.title}</h2>
+				<div className="flex items-center justify-between p-2">
+					<h2 className="text-lg font-bold">{review.title}</h2>
+					<p className="text-xs text-slate-500">{review.date}</p>
+				</div>
 			</Link>
 		</li>
 	);
