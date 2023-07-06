@@ -47,6 +47,7 @@ export function ReviewSearch({ search, setSearch }) {
 				placeholder="Enter a title..."
 				onChange={(e) => setSearch(e.target.value)}
 				onKeyPress={(e) => handleKey(e)}
+				autoComplete="off"
 			/>
 			<div className="text-[10px] text-slate-400">
 				<span className="px-1 py-[2px] font-mono border rounded bg-slate-100 text-slate-500 border-slate-400 mr-1">

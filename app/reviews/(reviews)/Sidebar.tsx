@@ -15,7 +15,7 @@ export default function Sidebar({ reviews }: { reviews: Review[] }) {
 		<nav
 			/*  */
 			/* fit" : "h-10" */
-			className={`p-2 border rounded border-slate-300 h-fit max-h-[300px]  overflow-y-scroll sticky top-6 transition-all`}
+			className={`p-2 border rounded border-slate-300 h-fit max-h-[300px]  overflow-y-scroll sticky top-16 transition-all`}
 		>
 			<div
 				onClick={handleSidebar}

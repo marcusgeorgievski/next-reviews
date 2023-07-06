@@ -20,7 +20,7 @@ export default function RootLayout({ children }: LayoutProps) {
 		<html lang="en" className={`${scp.variable} ${inter.variable}`}>
 			<body className={`flex flex-col min-h-screen prose-invert `}>
 				<Nav />
-				<main className="w-full max-w-[1200px] px-2 py-6 mx-auto grow border-slate-300">
+				<main className="relative w-full max-w-[1200px] px-2 py-6 mx-auto grow border-slate-300">
 					<div className="mb-6">
 						<Breadcrumbs />
 					</div>
