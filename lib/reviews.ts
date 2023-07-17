@@ -2,7 +2,7 @@ import { marked } from "marked";
 import { Review } from "@/lib/types";
 import qs from "qs";
 
-export const CMS_URL = "http://localhost:1337";
+export const CMS_URL = "http://127.0.0.1:1337";
 export const CACHE_TAG_REVIEWS = "reviews";
 
 // Get single review
