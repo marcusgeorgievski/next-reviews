@@ -20,7 +20,6 @@ export default function CreateReview() {
 	};
 
 	const handleSubmit = () => {
-		console.log("Fake submit");
 		clearState();
 		setToast(true);
 
@@ -60,7 +59,6 @@ export default function CreateReview() {
 					value={image}
 				/>
 			</div>
-
 			<p className="mb-2 text-sm text-slate-500">
 				Write your markdown post:
 			</p>
@@ -69,14 +67,12 @@ export default function CreateReview() {
 				onChange={(e) => setBody(e.target.value)}
 				className="w-full p-2 font-mono text-sm border rounded outline-none resize-none h-[800px] border-slate-400"
 			></textarea>
-
 			<button
 				onClick={handleSubmit}
 				className="fixed right-[10%] px-4 py-2 text-sm bg-blue-600 rounded bottom-4 text-slate-100"
 			>
 				Submit
 			</button>
-
 			<Toast
 				className={`fixed top-20 right-4 sm:right-[10%] w-fit px-2 py-2 text-left text-white bg-green-500 rounded transition-opacity ${
 					toast ? "opacity-100" : "opacity-0"

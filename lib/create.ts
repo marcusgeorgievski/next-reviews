@@ -1,5 +1,5 @@
-// import { writeFile } from "fs";
-import fs from "fs";
+import { writeFileSync } from "fs";
+// import fs from "fs";
 import { Review } from "@/lib/types";
 
 export function createFile({ title, body, date, image }: Review) {
@@ -16,7 +16,5 @@ image: ${image}
 ${body}
 `;
 
-	fs.writeFile(`/content/reviews/${slug}.md`, template, (err) =>
-		console.log(err)
-	);
+	writeFileSync(`/content/reviews/${slug}.md`, template, "utf8");
 }

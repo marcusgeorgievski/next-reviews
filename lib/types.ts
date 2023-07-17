@@ -1,9 +1,10 @@
 export interface Review {
-	body: string;
-	title: string;
-	date: string;
+	slug?: string;
+	title?: string;
+	body?: string;
+	date?: string;
 	image?: string;
+	subtitle?: string;
 	tags?: string[];
 	note?: string;
-	slug?: string;
 }

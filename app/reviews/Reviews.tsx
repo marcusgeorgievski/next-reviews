@@ -3,6 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Review } from "@/lib/types";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Reviews",
+};
 
 export default function Reviews({ reviews }: { reviews: Review[] }) {
 	const [search, setSearch] = useState("");
@@ -15,7 +20,7 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
 
 			{/* List Reviews */}
 
-			<ul className="flex flex-col gap-4 sm:grid sm:grid-cols-3">
+			<ul className="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
 				{reviews
 					.filter((review) => {
 						if (search !== "")
@@ -24,8 +29,14 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
 								.includes(search.toLowerCase());
 						return review.title;
 					})
-					.map((review) => {
-						return <Card key={review.slug} review={review} />;
+					.map((review, index) => {
+						return (
+							<Card
+								key={review.slug}
+								review={review}
+								index={index}
+							/>
+						);
 					})}
 			</ul>
 		</>
@@ -59,7 +70,7 @@ export function ReviewSearch({ search, setSearch }) {
 	);
 }
 
-function Card({ review }: { review: Review }) {
+function Card({ review, index }: { review: Review; index: number }) {
 	return (
 		<li
 			key={review.slug}
@@ -71,11 +82,21 @@ function Card({ review }: { review: Review }) {
 					width={1000}
 					height={1}
 					alt=""
-					className="w-full"
+					className="w-full aspect-video"
+					priority={index < 3}
 				/>
 				<div className="flex items-center justify-between p-2">
-					<h2 className="text-lg font-bold">{review.title}</h2>
-					<p className="text-xs text-slate-500">{review.date}</p>
+					<h2 className="text-lg font-bold line-clamp-1">
+						{review.title}
+					</h2>
+					<p className="text-xs text-slate-500 w-[12ch] text-right">
+						{review.date}
+					</p>
+				</div>
+				<div className="p-2 pt-0">
+					<p className="text-sm line text-slate-700 line-clamp-2">
+						{review.subtitle}
+					</p>
 				</div>
 			</Link>
 		</li>

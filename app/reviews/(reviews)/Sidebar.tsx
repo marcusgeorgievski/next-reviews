@@ -13,9 +13,7 @@ export default function Sidebar({ reviews }: { reviews: Review[] }) {
 
 	return (
 		<nav
-			/*  */
-			/* fit" : "h-10" */
-			className={`p-2 border rounded border-slate-300 h-fit max-h-[300px]  overflow-y-scroll sticky top-16 transition-all`}
+			className={`p-2 border rounded border-slate-300   sticky top-16 transition-all`}
 		>
 			<div
 				onClick={handleSidebar}
@@ -28,11 +26,15 @@ export default function Sidebar({ reviews }: { reviews: Review[] }) {
 					className={`${open && "rotate-180"} transition-all`}
 				/>
 			</div>
-			<ul className={`flex flex-col font-mono ${!open && "hidden"} `}>
+			<ul
+				className={`flex flex-col font-mono ${
+					!open && "hidden"
+				} overflow-y-scroll h-fit max-h-[300px]`}
+			>
 				{reviews.map((rev) => (
 					<li
 						key={rev.slug}
-						className="px-1 py-1 text-sm rounded text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+						className="px-1 py-1 text-xs rounded text-slate-600 hover:text-blue-600 hover:bg-blue-50"
 					>
 						<Link href={rev.slug} className="flex">
 							{rev.title}

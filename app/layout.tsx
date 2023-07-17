@@ -13,6 +13,9 @@ interface LayoutProps {
 export const metadata = {
 	title: "Reviews",
 	description: "desc",
+	icons: {
+		icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Radiation_warning_symbol_2.svg/768px-Radiation_warning_symbol_2.svg.png",
+	},
 };
 
 export default function RootLayout({ children }: LayoutProps) {
@@ -21,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps) {
 			<body className={`flex flex-col min-h-screen prose-invert `}>
 				<Nav />
 				<main className="relative w-full max-w-[1200px] px-2 py-6 mx-auto grow border-slate-300">
-					<div className="mb-6">
+					<div className="mb-2">
 						<Breadcrumbs />
 					</div>
 					{children}
